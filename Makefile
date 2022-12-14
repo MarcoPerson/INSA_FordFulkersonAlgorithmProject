@@ -12,9 +12,9 @@ edit:
 demo: build
 	@echo "\n==== EXECUTING ====\n"
 	./ftest.native graphs/graph1 0 5 graphs/outfile
-	dot -Tsvg outfile > graphs/output-file.svg
-	@echo "\n==== RESULT ==== (content of outfile) \n"
-	@cat outfile
+	dot -Tsvg graphs/outfile > graphs/output-file.svg
+	#@echo "\n==== RESULT ==== (content of outfile) \n"
+	#@cat graphs/outfile
 
 clean:
 	-rm -rf _build/
