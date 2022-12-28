@@ -1,0 +1,8 @@
+paul 2 3
+ghyzlane 1
+amine 2
+marc 3
+
+1 : 1 prof sport
+2 : 2 informaticien
+3 : 1 serveur
