@@ -52,6 +52,7 @@ let write_file path graph =
   close_out ff ;
   ()
 
+
 (* Reads a line with a node. *)
 let read_node graph line =
   try Scanf.sscanf line "n %f %f %d" (fun _ _ id -> new_node graph id)
@@ -131,3 +132,76 @@ let export path graph =
 
   close_out ff ;
   ()
+
+
+
+(*Reading the file for the bipatern matching problem : Enployee and Job available*)
+let job_map = Hashtbl.create 500
+let applyer_map = Hashtbl.create 500
+let id_incr = 1000
+let ref_id_incr = ref id_incr
+
+let split_to_int str applyer_id graph = 
+  let split_liste = String.split_on_char ' ' str in 
+  let split_int = List.map int_of_string split_liste in
+  let rec loop graph liste = match liste with
+    |[] -> graph
+    |job_id::tail -> loop (new_arc (ensure graph job_id) applyer_id job_id "1") tail
+in loop graph split_int
+
+(* Reads a line with an applyer. *)
+let read_applyer graph line =
+  try Scanf.sscanf line "A %s %s@%%" (fun name jobs_id -> 
+    Hashtbl.add applyer_map !ref_id_incr name;
+    ref_id_incr := !ref_id_incr + 1;
+    let update_graph = new_arc (ensure graph (!ref_id_incr - 1)) 0 (!ref_id_incr - 1) "1" in
+    split_to_int jobs_id (!ref_id_incr - 1) update_graph)
+  with e ->
+    Printf.printf "Cannot read applyer in line - %s:\n%s\n%!" (Printexc.to_string e) line ;
+    failwith "from_file"
+
+(* Reads a line with a job. *)
+let read_job graph line =
+   
+  try Scanf.sscanf line "J %d : %s %s@%%"
+        (fun job_id label name -> 
+          Hashtbl.add job_map job_id name;
+          new_arc (ensure graph job_id) job_id (-1) label)
+
+  with e ->
+    Printf.printf "Cannot read job in line - %s:\n%s\n%!" (Printexc.to_string e) line ;
+    failwith "from_file"
+
+let from_file_problem path =
+
+  let infile = open_in path in
+
+  (* Read all lines until end of file. *)
+  let rec loop graph =
+    try
+      let line = input_line infile in
+
+      (* Remove leading and trailing spaces. *)
+      let line = String.trim line in
+
+      let graph2 =
+        (* Ignore empty lines *)
+        if line = "" then graph
+
+        (* The first character of a line determines its content : n or e. *)
+        else match line.[0] with
+          | 'J' -> read_job graph line
+          | 'A' -> read_applyer graph line
+
+          (* It should be a comment, otherwise we complain. *)
+          | _ -> read_comment graph line
+      in      
+      loop graph2
+
+    with End_of_file -> graph (* Done *)
+  in
+
+  let final_graph = loop (new_node (new_node empty_graph 0) (-1)) in
+  
+  close_in infile ;
+  final_graph

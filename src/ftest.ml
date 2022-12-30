@@ -23,16 +23,18 @@ let () =
   in
 
   (* Open file *)
-  let graph = from_file infile in
+  let graph = from_file_problem infile in
 
   (* Rewrite the graph that has been read. *)
   (*let gr = clone_nodes graph in*)
   (*let () = Printf.printf "Le chemin trouvé est: %s \n%!" (String.concat " -> " (List.map string_of_int (depthSearch (gmap graph int_of_string) source sink))) in
   let () = Printf.printf "Les flow trouvé sont: %s \n%!" (String.concat " -> " (List.map string_of_int (flowList (gmap graph int_of_string) (depthSearch (gmap graph int_of_string) source sink)))) in*)
-  let () = Printf.printf "Le flow maximale est: %s \n%!" (string_of_int (algoFulkerson (gmap graph int_of_string) source sink)) in
-  let finalGraph = finalGraphFlow (gmap graph int_of_string) source sink in
-  
-  let () = export outfile (gmap finalGraph string_of_int) in
+  (*let () = Printf.printf "Le flow maximale est: %s \n%!" (string_of_int (algoFulkerson (gmap graph int_of_string) source sink)) in*)
+  let () = match (algoFulkerson (gmap graph int_of_string) source sink) with
+    |(value, final_graph) ->  Printf.printf "Le flow maximale est: %s \n%!" (string_of_int value) in
+  let final_graph_flow = finalGraphFlow (gmap graph int_of_string) source sink in
+  let () = export "graphs/start_graph.txt" graph in
+  let () = export outfile (gmap final_graph_flow string_of_int) in
   (*let () = write_file outfile gr in*)
 
   ()

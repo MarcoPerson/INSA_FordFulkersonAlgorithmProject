@@ -76,7 +76,7 @@ let algoFulkerson graph id1 id2 =
         Printf.printf "Chemin : %s \n%!" (String.concat " -> " (List.map string_of_int liste));
         Printf.printf "Flow Min : %s \n%!" (string_of_int minFlow);
         loop (updateFlow graph liste) (value + minFlow)
-    |[] -> value
+    |[] -> value, graph
   in loop graph 0
 
 let finalGraphFlow graph id1 id2 = 

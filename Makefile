@@ -11,8 +11,9 @@ edit:
 
 demo: build
 	@echo "\n==== EXECUTING ====\n"
-	./ftest.native graphs/graph1 0 5 graphs/outfile
-	dot -Tsvg graphs/outfile > graphs/output-file.svg
+	./ftest.native graphs/problem.txt 0 -1 graphs/end_flow_graph.txt
+	dot -Tsvg graphs/end_flow_graph.txt > graphs/end_flow_graph.svg
+	dot -Tsvg graphs/start_graph.txt > graphs/start_graph.svg
 	#@echo "\n==== RESULT ==== (content of outfile) \n"
 	#@cat graphs/outfile
 

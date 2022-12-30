@@ -9,7 +9,7 @@ val find_arc_bis : int graph -> id -> id -> int
 
 val updateFlow : int graph -> id list -> int graph
 
-val algoFulkerson : int graph -> id -> id -> int
+val algoFulkerson : int graph -> id -> id -> int*int graph
 
 val finalGraphFlow : int graph -> id -> id -> int graph
 
