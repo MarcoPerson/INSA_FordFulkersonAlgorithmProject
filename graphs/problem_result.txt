@@ -1,0 +1,9 @@
+Result of the Appliers and Jobs entries
+
+	Marc : Serveur
+	Amine : Informaticien
+	Ghizlane : Prof de sport
+	Paul : Informaticien
+
+End of the result 
+

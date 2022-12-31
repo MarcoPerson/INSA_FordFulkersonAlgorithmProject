@@ -1,14 +1,15 @@
 digraph finite_state_machine {
-
+
     fontname="Helvetica,Arial,sans-serif"
-
+
     node [fontname="Helvetica,Arial,sans-serif"]
-
+
     edge [fontname="Helvetica,Arial,sans-serif"]
-
+
     rankdir=LR;
-
+
     node [shape = circle];
+	1003 -> 1 [label = 1]
 	1003 -> 3 [label = 1]
 	0 -> 1003 [label = 1]
 	0 -> 1002 [label = 1]

@@ -137,27 +137,27 @@ let export path graph =
 
 (*Reading the file for the bipatern matching problem : Enployee and Job available*)
 let job_map = Hashtbl.create 500
-let applyer_map = Hashtbl.create 500
+let applier_map = Hashtbl.create 500
 let id_incr = 1000
 let ref_id_incr = ref id_incr
 
-let split_to_int str applyer_id graph = 
+let split_to_int str applier_id graph = 
   let split_liste = String.split_on_char ' ' str in 
   let split_int = List.map int_of_string split_liste in
   let rec loop graph liste = match liste with
     |[] -> graph
-    |job_id::tail -> loop (new_arc (ensure graph job_id) applyer_id job_id "1") tail
+    |job_id::tail -> loop (new_arc (ensure graph job_id) applier_id job_id "1") tail
 in loop graph split_int
 
-(* Reads a line with an applyer. *)
-let read_applyer graph line =
+(* Reads a line with an applier. *)
+let read_applier graph line =
   try Scanf.sscanf line "A %s %s@%%" (fun name jobs_id -> 
-    Hashtbl.add applyer_map !ref_id_incr name;
+    Hashtbl.add applier_map !ref_id_incr name;
     ref_id_incr := !ref_id_incr + 1;
     let update_graph = new_arc (ensure graph (!ref_id_incr - 1)) 0 (!ref_id_incr - 1) "1" in
     split_to_int jobs_id (!ref_id_incr - 1) update_graph)
   with e ->
-    Printf.printf "Cannot read applyer in line - %s:\n%s\n%!" (Printexc.to_string e) line ;
+    Printf.printf "Cannot read applier in line - %s:\n%s\n%!" (Printexc.to_string e) line ;
     failwith "from_file"
 
 (* Reads a line with a job. *)
@@ -191,7 +191,7 @@ let from_file_problem path =
         (* The first character of a line determines its content : n or e. *)
         else match line.[0] with
           | 'J' -> read_job graph line
-          | 'A' -> read_applyer graph line
+          | 'A' -> read_applier graph line
 
           (* It should be a comment, otherwise we complain. *)
           | _ -> read_comment graph line
@@ -205,3 +205,23 @@ let from_file_problem path =
   
   close_in infile ;
   final_graph
+
+let export_job_applier path graph = 
+  (* Open a write-file. *)
+  let ff = open_out path in
+    fprintf ff "Result of the Appliers and Jobs entries\n\n";
+    let all_applier = (out_arcs graph 0) in
+      let rec loop liste_applier = match liste_applier with
+        |[] -> fprintf ff "\nEnd of the result \n"
+        |(applier_id, _)::tail -> 
+            let job_get_liste = (out_arcs graph applier_id) in
+              let rec second_loop liste_job = match liste_job with
+                |[] -> loop tail
+                |(job_id, label)::second_tail -> if label == 0 
+                                    then ((fprintf ff "\t%s : %s\n" (Hashtbl.find applier_map applier_id) (Hashtbl.find job_map job_id)); loop tail)
+                                    else (second_loop second_tail)
+              in second_loop job_get_liste
+      in loop all_applier;
+    fprintf ff "\n" ;
+    close_out ff ;
+  ()

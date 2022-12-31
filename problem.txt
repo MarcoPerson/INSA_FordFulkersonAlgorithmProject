@@ -1,8 +1,0 @@
-J 1 : 1 prof sport
-J 2 : 2 informaticien
-J 3 : 1 serveur
-
-A paul 2 3
-A ghizlane 1
-A amine 2
-A marc 3
