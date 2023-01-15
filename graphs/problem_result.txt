@@ -1,9 +1,19 @@
 Result of the Appliers and Jobs entries
 
-	Marc : Serveur
+	Walid : Néphrologue
+	Sofiane : Mécanicien
+	Tasnim : Pediatre
+	Marc : Cardiologue
+	Adama : Dermathologue
+	Wissal : Mécanicien
+	Sirine : Boxeur
+	Yu : Danceuse
+	Thomas : Gérant de Club
+	Marie : Ingénieur
+	Merveilles : Informaticien
 	Amine : Informaticien
 	Ghizlane : Prof de sport
-	Paul : Informaticien
+	Paul : Serveur
 
 End of the result 
 

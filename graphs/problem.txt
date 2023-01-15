@@ -1,8 +1,30 @@
 J 1 : 1 Prof de sport
 J 2 : 2 Informaticien
 J 3 : 1 Serveur
+J 4 : 2 Estéticien  
+J 5 : 3 Mécanicien
+J 6 : 1 Prof de Programmation
+J 7 : 2 Boxeur
+J 8 : 1 Danceuse
+J 9 : 2 Pediatre
+J 10 : 3 Ingénieur
+J 11 : 1 Dermathologue
+J 12 : 2 Cardiologue
+J 13 : 1 Néphrologue
+J 14 : 1 Gérant de Club
 
-A Paul 2 3
+A Paul 3
 A Ghizlane 1
-A Amine 2
-A Marc 3 1
+A Amine 2 12
+A Merveilles 3 1 2
+A Marie 8 10
+A Thomas 14
+A Yu 8 7
+A Sirine 7 14
+A Wissal 5 4
+A Adama 11 7
+A Marc 12 6
+A Tasnim 9 14
+A Sofiane 5
+A Walid 13
+A Cristiano 3

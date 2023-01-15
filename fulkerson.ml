@@ -23,11 +23,18 @@ open Tools
   |Some a -> false
 *)
 
+(*Exception for Inexistant id given for finding the path *)
 exception Inexistant
+
+(*Exception when we try to convert None into a value*)
 exception Impossible
 
 let depthSearch graph id_source id_puit = 
+
+  (* If the start id and the end id are both if the graph*)
   if ((node_exists graph id_source) && (node_exists graph id_puit)) then
+
+  (* Getting the out arcs of the first id*)
   let voisins = out_arcs graph id_source in
     let rec parcours list_voisin acc =
         match list_voisin with 

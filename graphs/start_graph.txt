@@ -1,24 +1,65 @@
 digraph finite_state_machine {
-
+
     fontname="Helvetica,Arial,sans-serif"
-
+
     node [fontname="Helvetica,Arial,sans-serif"]
-
+
     edge [fontname="Helvetica,Arial,sans-serif"]
-
+
     rankdir=LR;
-
+
     node [shape = circle];
-	1003 -> 1 [label = 1]
-	1003 -> 3 [label = 1]
+	1014 -> 3 [label = 1]
+	0 -> 1014 [label = 1]
+	0 -> 1013 [label = 1]
+	0 -> 1012 [label = 1]
+	0 -> 1011 [label = 1]
+	0 -> 1010 [label = 1]
+	0 -> 1009 [label = 1]
+	0 -> 1008 [label = 1]
+	0 -> 1007 [label = 1]
+	0 -> 1006 [label = 1]
+	0 -> 1005 [label = 1]
+	0 -> 1004 [label = 1]
 	0 -> 1003 [label = 1]
 	0 -> 1002 [label = 1]
 	0 -> 1001 [label = 1]
 	0 -> 1000 [label = 1]
+	1013 -> 13 [label = 1]
+	1012 -> 5 [label = 1]
+	1011 -> 14 [label = 1]
+	1011 -> 9 [label = 1]
+	1010 -> 6 [label = 1]
+	1010 -> 12 [label = 1]
+	1009 -> 7 [label = 1]
+	1009 -> 11 [label = 1]
+	1008 -> 4 [label = 1]
+	1008 -> 5 [label = 1]
+	1007 -> 14 [label = 1]
+	1007 -> 7 [label = 1]
+	1006 -> 7 [label = 1]
+	1006 -> 8 [label = 1]
+	1005 -> 14 [label = 1]
+	1004 -> 10 [label = 1]
+	1004 -> 8 [label = 1]
+	1003 -> 2 [label = 1]
+	1003 -> 1 [label = 1]
+	1003 -> 3 [label = 1]
+	1002 -> 12 [label = 1]
 	1002 -> 2 [label = 1]
 	1001 -> 1 [label = 1]
 	1000 -> 3 [label = 1]
-	1000 -> 2 [label = 1]
+	14 -> -1 [label = 1]
+	13 -> -1 [label = 1]
+	12 -> -1 [label = 2]
+	11 -> -1 [label = 1]
+	10 -> -1 [label = 3]
+	9 -> -1 [label = 2]
+	8 -> -1 [label = 1]
+	7 -> -1 [label = 2]
+	6 -> -1 [label = 1]
+	5 -> -1 [label = 3]
+	4 -> -1 [label = 2]
 	3 -> -1 [label = 1]
 	2 -> -1 [label = 2]
 	1 -> -1 [label = 1]
