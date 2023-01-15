@@ -206,15 +206,20 @@ let from_file_problem path =
   close_in infile ;
   final_graph
 
+(*Export the result of the flow graph into the file given by the path*)
 let export_job_applier path graph = 
   (* Open a write-file. *)
   let ff = open_out path in
     fprintf ff "Result of the Appliers and Jobs entries\n\n";
+
+    (*Get the list of all the applier*)
     let all_applier = (out_arcs graph 0) in
       let rec loop liste_applier = match liste_applier with
         |[] -> fprintf ff "\nEnd of the result \n"
         |(applier_id, _)::tail -> 
             let job_get_liste = (out_arcs graph applier_id) in
+            
+              (*Add the applier and the job he got*)
               let rec second_loop liste_job = match liste_job with
                 |[] -> loop tail
                 |(job_id, label)::second_tail -> if label == 0 

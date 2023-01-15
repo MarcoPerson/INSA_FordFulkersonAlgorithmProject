@@ -24,7 +24,10 @@ let () =
 
   (* Open file *)
 
+  (*To use only the Fulkerson algorithm*)
   (*let graph = from_file infile in*)
+
+  (*To use the Maximum Bipartite Matching algorithm*)
   let graph = from_file_problem infile in
 
   (* Rewrite the graph that has been read. *)

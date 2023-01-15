@@ -18,5 +18,3 @@ val algoFulkerson : int graph -> id -> id -> int*int graph
 
 (*returns the final flow graph*)
 val finalGraphFlow : int graph -> id -> id -> int graph
-
-(*val arc_is_zero: int graph -> id -> id -> bool*)
