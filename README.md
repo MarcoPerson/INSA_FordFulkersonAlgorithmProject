@@ -7,8 +7,11 @@ This project contains the basic Ford-Fulkerson Algorithm and a use-case of this 
 For the Ford-Fulkerson Algorithm you can create a graph on [Graph Editor](https://algorithms.discrete.ma.tum.de/graph-algorithms/flow-ford-fulkerson/index_en.html) and get the maximum flow and the end flow graph with our Implementation.
 
 For our use-case Jobs and Appliers which is based on the Maximum Bipartite Matching, the input are Jobs and the Appliers and the output is a maximum matching proposition.
+
 A job is in the format "J [unique_id] : [number_of_places_available] [name_of_the_job]"
+
 An Applier is in the format "A [applier_name] [job_id] [job_id] ..."
+
 An Apllier can apply to multiple Jobs
 
 You can then give a file as input that look like this
